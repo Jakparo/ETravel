@@ -6,7 +6,8 @@ export default  {
         price: '1100',
         continent:'North America',
         rating: 5,
-        description: 'abc'
+        description: 'abc',
+        countInStock:0
     },
     {
         _id:'2',
@@ -14,7 +15,8 @@ export default  {
         image: 'https://loremflickr.com/320/240/china',
         price: '900',
         continent:'Asian',
-        rating: 4
+        rating: 4,
+        countInStock:9
     },
     {
         _id:'3',
@@ -22,7 +24,8 @@ export default  {
         image: 'https://loremflickr.com/320/240/italy',
         price: '990',
         continent:'Europe',
-        rating: 4.5
+        rating: 4.5,
+        countInStock:10
     }
     ]
 }
