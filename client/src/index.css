@@ -24,14 +24,14 @@ body{
 }
 
 .header{
-grid-area: header;
-color: white !important;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1rem;
-box-shadow: 0 0.1rem #aaa;
-background-color: black;
+  grid-area: header;
+  color: white !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 0.1rem #aaa;
+  background-color: hsl(210, 12%, 16%);
 }
 
 .brand a{
@@ -45,13 +45,18 @@ background-color: black;
   color: white;
   text-decoration: none;
   padding: 1rem;
+  margin-right: 1.5rem;
 }
 
 .header-links a:hover{
-  background-color: #E00099;
+  background-color: #6be79b ;
   border-radius: .5rem ;
   -moz-border-radius: .5rem;
   -webkit-border-radius: .5rem;
+}
+
+.header-links> a:first-child:hover{
+  background-color: #E00099 !important;
 }
 
 .main{
@@ -190,8 +195,16 @@ a{
   margin-bottom: 1rem;
 }
 
-.back-to-home{
+.back-to-home >span {
+  margin-left: 1.5rem;
   padding: 1rem;
+  border-radius: .5rem ;
+  -moz-border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+}
+
+.back-to-home span:hover {
+  background-color: #aadfe4;
 }
 
 .details-action{
@@ -220,5 +233,56 @@ a{
   border: .1rem #404080 solid;
   background-color: #fe424E;
   color: white;
+}
+
+/* Cart */
+
+.cart {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+  align-items: flex-start;
+}
+.cart-list {
+  flex: 3 1 60rem;
+}
+.cart-action {
+  flex: 1 1 20rem;
+  background-color: #f0f0f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.cart-list-container {
+  padding: 0;
+  list-style-type: none;
+  padding: 1rem;
+}
+.cart-list-container li {
+  display: flex;
+  justify-content: space-between;
+
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.1rem #c0c0c0 solid;
+}
+.cart-list-container li img {
+  max-width: 10rem;
+  max-height: 10rem;
+}
+.cart-list-container li:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.cart-image {
+  flex: 1 1;
+}
+.cart-name {
+  flex: 8 1;
+}
+.cart-price {
+  flex: 1 1;
+  font-size: 2.5rem;
+  text-align: right;
 }
 

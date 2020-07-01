@@ -23,8 +23,12 @@ function ProductScreen(props){
 
     return (
     <div >
-        <div className="back-to-home">
-            <Link to="/">Back to Homepage</Link>
+        <div>
+            <p className="back-to-home">
+                <span>
+                    <Link to="/">Back</Link>
+                </span>
+            </p>
         </div>    
             {loading? <div>Loading...</div>:
             error? <div>{error}</div>:
@@ -42,7 +46,7 @@ function ProductScreen(props){
                             <h4>{product.continent}</h4>
                         </li>
                         <li>
-                            {product.rating} Starts 
+                            {product.rating} starts 
                         </li>
                         <li>
                             Description:

@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
+import CartScreen from './Screens/CartScreen';
 
 function App() {
     const openMenu = () => {
@@ -23,8 +24,8 @@ function App() {
                     <Link to="/">ETravel</Link>
                 </div>
                 <div className="header-links">
-                    <a href="cart.html">Cart</a>
-                    <a href="signin.html">Sign-in</a>
+                    <a href="/cart">Cart</a>
+                    <a href="signin.html">Login</a>
                 </div>
             </header>
             <aside className="sidebar">
@@ -51,6 +52,7 @@ function App() {
             <main className="main">
                 <div className="content">
                     <Route path="/product/:id" exact component={ProductScreen}/>
+                    <Route path="/cart/:id?" component={CartScreen} />
                     <Route path="/" exact component={HomeScreen}/>
                 </div>
             </main>
