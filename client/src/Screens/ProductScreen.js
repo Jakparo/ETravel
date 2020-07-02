@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct } from '../actions/productAction';
 
 function ProductScreen(props){
 
-    const[qty, setQty] = useState(1);
+    const[ qty, setQty ] = useState(1);
     const productDetails = useSelector(state => state.productDetails );
-    const {product, loading, error} = productDetails;
+    const { product, loading, error } = productDetails;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -30,10 +30,10 @@ function ProductScreen(props){
                 </span>
             </p>
         </div>    
-            {loading? <div>Loading...</div>:
-            error? <div>{error}</div>:
-            (
-                <div className="details">
+        {loading? <div>Loading...</div>:
+        error? <div>{error}</div>:
+        (
+            <div className="details">
                 <div className="details-image">
                     <img src={product.image} alt="product"></img>
                 </div>
@@ -75,14 +75,14 @@ function ProductScreen(props){
                             </select>
                         </li>
                         <li>
-                            {product.countInStock> 0 && <button onClick={handleAddToCart} className="button">Add to Cart</button>
-                            }
-                            
+                            {  product.countInStock> 0 && <button onClick={handleAddToCart} 
+                            className="button">Add to Cart</button>
+                            } 
                         </li>
                     </ul>
                 </div>
             </div>
-            )
+        )
             } 
     </div>
     )  

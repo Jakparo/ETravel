@@ -26,6 +26,24 @@ export default  {
         continent:'Europe',
         rating: 4.5,
         countInStock:10
+    },
+    {
+        _id:'4',
+        name: 'Vietnam',
+        image: 'https://loremflickr.com/320/240/vietnam',
+        price: '850',
+        continent:'Asia',
+        rating: 5,
+        countInStock:19
+    },
+    {
+        _id:'5',
+        name: 'France',
+        image: 'https://loremflickr.com/320/240/france',
+        price: '899',
+        continent:'Europe',
+        rating: 4.6,
+        countInStock:2
     }
     ]
 }

@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle ,Spinner} from 'reactstrap';
+    
+
 import { listProducts } from '../actions/productAction';
 
 function HomeScreen(props){
@@ -16,22 +19,24 @@ function HomeScreen(props){
         };
     }, [])
 
-    return loading? <div>Loading...</div> : 
+    return loading? <div><Spinner color="primary" /></div> : 
     error ? <div> {error}</div> :
         <ul className="products">
         {
             products.map(product => 
             <li key={product._id}>
                 <div className="product">
-                    <Link to={'/product/'+ product._id}>
-                        <img className="product-image" src={product.image} alt="product"/>
-                    </Link>
-                    <div className="product-name">
-                        <Link to={'/product/'+ product._id}>{product.name}</Link>
-                    </div>
-                    <div className="product-continent">{product.continent}</div>
-                    <div className="product-price">${product.price}</div>
-                    <div className="product-rating">{product.rating} Stars</div>
+                    <Card>
+                        <Link to={'/product/'+ product._id}>
+                            <CardImg className="product-image" top width="100%" src={product.image} alt="product" />
+                            <CardBody>
+                                <CardTitle className="product-name">{product.name}</CardTitle>
+                                <CardSubtitle>{product.continent}</CardSubtitle>
+                                <CardSubtitle className="product-price">${product.price}</CardSubtitle>
+                                <CardSubtitle>{product.rating} stars</CardSubtitle>
+                            </CardBody>
+                        </Link>
+                    </Card>
                 </div>
             </li>
             )
