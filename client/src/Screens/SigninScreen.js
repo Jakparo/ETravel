@@ -28,7 +28,7 @@ function SigninScreen(props){
         <form onSubmit={submitHandler}>
             <ul className="form-container">
                 <li>
-                    <h2>Sign-in</h2>
+                    <h2 className="branch">ETravel</h2>
                 </li>
                 <li>
                     {loading && <div>Loading..</div>}
