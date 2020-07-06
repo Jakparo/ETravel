@@ -1,15 +1,17 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-
+import bodyParser from 'body-parser';
 import data from './data';
 import config from './config';
 import userRoute from './routes/userRoute';
 
 dotenv.config();
 
-const app = express();
 const mongodbUrl = config.MONGODB_URL;
+const app = express();
+
+app.use(bodyParser.json());
 
 mongoose.connect(mongodbUrl, {
     useNewUrlParser: true,
