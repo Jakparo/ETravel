@@ -3,7 +3,7 @@ html{
   box-sizing: border-box;
 }
 body{
-  font: 1.6rem "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font: 1.6rem "SF Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
   height: 100vh;
   margin: 0;
 }
@@ -253,13 +253,14 @@ a{
 
 .button.primary{
   background-color: #f1eeeb;
+  font-size: medium;
 }
 .button.primary:hover{
   background-color: #E00099;
 }
 .button.secondary{
   color: white;
-  background-color: #0c0c0c;
+  background-color: #141414;
 }
 .button.secondary:hover{
   opacity: 0.7;
@@ -347,4 +348,27 @@ input{
   padding: 1rem;
   border: .1rem #c0c0c0 solid;
   border-radius: .5rem;
+}
+
+/* Products */
+
+.product-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+}
+
+.content-margined{
+  margin: 1rem;
+}
+
+.table{
+  width: 100%;
+}
+th{
+  text-align: left;
+}
+tbody>tr:nth-child(odd){
+  background-color: #f0f0f0;
 }

@@ -47,7 +47,7 @@ function SigninScreen(props){
                     </input>
                 </li>
                 <li>
-                    <button type="submit" className="button primary">Login</button>
+                    <button type="submit" className="button primary">Log in</button>
                 </li>
                 <li>New to Etravel?</li>
                 <li>

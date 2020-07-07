@@ -1,12 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+import ProductsScreen from './Screens/ProductsScreen';
 import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
 import CartScreen from './Screens/CartScreen';
 import SigninScreen from './Screens/SigninScreen';
 import RegisterScreen from './Screens/RegisterScreen';
-import { useSelector } from 'react-redux';
+
 
 function App() {
 
@@ -34,7 +37,7 @@ function App() {
                     <Link to ="/cart">Cart</Link>
                     {
                         userInfo ? <Link to="/profile">{userInfo.name}</Link>:
-                        <Link to ="/signin">Login</Link>
+                        <Link to ="/signin">Log in</Link>
                     }
                 </div>
             </header>
@@ -61,6 +64,7 @@ function App() {
             </aside>
             <main className="main">
                 <div className="content">
+                    <Route path="/products" component={ProductsScreen} />
                     <Route path="/signin" component={SigninScreen}/>
                     <Route path="/register" component={RegisterScreen}/>
                     <Route path="/product/:id" exact component={ProductScreen}/>

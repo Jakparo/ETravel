@@ -43,19 +43,19 @@ function ProductScreen(props){
                             <h4>{product.name}</h4>
                         </li>
                         <li>
-                            <h4>{product.continent}</h4>
+                            <p>{product.continent}</p>
                         </li>
-                        <li>
+                        {/* <li>
                             {product.rating} starts 
+                        </li> */}
+                        <li>
+                            <p>${product.price}</p>
                         </li>
                         <li>
-                            Description:
+                            <h4>Description:</h4>
                             <div>
                                 {product.description}
                             </div>
-                        </li>
-                        <li>
-                            <b>${product.price}</b>
                         </li>
                     </ul>
                 </div>
