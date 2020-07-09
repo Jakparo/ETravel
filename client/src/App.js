@@ -12,6 +12,7 @@ import RegisterScreen from './Screens/RegisterScreen';
 import ShippingScreen from './Screens/ShippingScreen';
 import PaymentScreen from './Screens/PaymentScreen';
 import PlaceOrderScreen from './Screens/PlaceOrderScreen';
+import OrderScreen from './Screens/OrderScreen';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
             </aside>
             <main className="main">
                 <div className="content">
+                    <Route path="/order/:id" component={OrderScreen}/>
                     <Route path="/products" component={ProductsScreen} />
                     <Route path="/shipping" component={ShippingScreen}/>
                     <Route path="/payment" component={PaymentScreen}/>
@@ -78,7 +80,7 @@ function App() {
                 </div>
             </main>
             <footer className="footer">
-                All right reserved.
+            Copyright © 2020. Etravel, Nam & Minh.
             </footer>
         </div>
     </BrowserRouter>

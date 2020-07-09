@@ -7,6 +7,7 @@ import { productListReducer, productDetailsReducer,
 from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers'
 import { userSigninReducer, userRegisterReducer } from './reducers/userReducers';
+import { orderCreateReducer, orderDetailsReducer } from './reducers/orderReducers'
 
 
 const cartItems = Cookie.getJSON("cartItems") || [];
@@ -20,7 +21,9 @@ const reducer = combineReducers({
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
     productSave: productSaveReducer,
-    productDelete: productDeleteReducer
+    productDelete: productDeleteReducer,
+    orderCreate: orderCreateReducer,
+    orderDetails: orderDetailsReducer
 
 });
 
