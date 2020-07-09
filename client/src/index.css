@@ -9,8 +9,9 @@ body{
 }
 
 #root{
-  height: 100%;
+  height: 100%; 
 }
+
 
 .grid-container{
   display: grid;
@@ -42,6 +43,7 @@ body{
 }
 
 .header-links a{
+  font-size: large;
   color: black;
   text-decoration: none;
   padding: 1rem;
@@ -91,7 +93,7 @@ a{
   flex: 0 1rem 31.5rem;
   margin: 1rem;
   height: auto;
-  border-bottom: .1rem #ffcb59 solid;
+  border-bottom: .1rem #afafaf solid;
 }
 
 .products li:hover {
@@ -197,16 +199,22 @@ a{
   margin-bottom: 1rem;
 }
 
-.back-to-home >span {
+.back-to-home  span {
+  font-weight: bolder;
   margin-left: 1.5rem;
   padding: 1rem;
   border-radius: .5rem ;
   -moz-border-radius: .5rem;
   -webkit-border-radius: .5rem;
+  opacity:0.6;
 }
 
 .back-to-home span:hover {
-  background-color: #aadfe4;
+  opacity:1;
+}
+
+.back-to-home a:visited {
+  color: rgb(18, 18, 48);
 }
 
 .details-action{
@@ -439,3 +447,17 @@ tbody>tr:nth-child(odd){
   font-weight: bold;
   color: #c04000;
 }
+
+/* Profile */
+
+.profile{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile-info{
+  flex: 1 1 30rem;
+}
+.profile-orders{
+  flex: 3 1 60rem;
+} 

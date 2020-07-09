@@ -13,9 +13,12 @@ import ShippingScreen from './Screens/ShippingScreen';
 import PaymentScreen from './Screens/PaymentScreen';
 import PlaceOrderScreen from './Screens/PlaceOrderScreen';
 import OrderScreen from './Screens/OrderScreen';
+import ProfileScreen from './Screens/ProfileScreen';
+import airplane from './icons/airplane.svg'
+
 
 function App() {
-
+    const url = airplane;
     const userSignin = useSelector(state=>state.userSignin);
     const {userInfo} = userSignin;
 
@@ -34,7 +37,7 @@ function App() {
                     <button onClick={openMenu}>
                         &#9776;
                     </button>
-                    <Link to="/">ETravel</Link>
+                    <Link to="/">ETravel <img src={url} width={32} height={32}/> </Link>
                 </div>
                 <div className="header-links">
                     <Link to ="/cart">Cart</Link>
@@ -67,6 +70,7 @@ function App() {
             </aside>
             <main className="main">
                 <div className="content">
+                    <Route path="/profile" component={ProfileScreen} />
                     <Route path="/order/:id" component={OrderScreen}/>
                     <Route path="/products" component={ProductsScreen} />
                     <Route path="/shipping" component={ShippingScreen}/>
@@ -80,7 +84,7 @@ function App() {
                 </div>
             </main>
             <footer className="footer">
-            Copyright © 2020. Etravel, Nam & Minh.
+            Copyright © 2020 ETravel.
             </footer>
         </div>
     </BrowserRouter>

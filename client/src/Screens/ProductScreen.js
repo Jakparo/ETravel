@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct } from '../actions/productAction';
-
+import  url  from '../icons/return.svg'
 function ProductScreen(props){
 
     const[ qty, setQty ] = useState(1);
@@ -26,7 +26,7 @@ function ProductScreen(props){
         <div>
             <p className="back-to-home">
                 <span>
-                    <Link to="/">Back</Link>
+                    <Link to="/"> <img src={url} width={32} height={32}/></Link>
                 </span>
             </p>
         </div>    
