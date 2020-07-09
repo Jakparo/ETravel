@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import ProductsScreen from './Screens/ProductsScreen';
