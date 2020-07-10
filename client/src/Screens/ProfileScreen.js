@@ -13,12 +13,12 @@ const dispatch = useDispatch();
 const userSignin = useSelector(state => state.userSignin);
 const { userInfo } = userSignin;
 const handleLogout = () => {
-dispatch(logout());
-props.history.push("/signin");
+    dispatch(logout());
+    props.history.push("/signin");
 }
 const submitHandler = (e) => {
-e.preventDefault();
-dispatch(update({ userId: userInfo._id, email, name, password }))
+    e.preventDefault();
+    dispatch(update({ userId: userInfo._id, email, name, password }))
 }
 const userUpdate = useSelector(state => state.userUpdate);
 const { loading, success, error } = userUpdate;

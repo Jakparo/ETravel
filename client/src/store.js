@@ -7,7 +7,8 @@ import { productListReducer, productDetailsReducer,
 from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers'
 import { userSigninReducer, userRegisterReducer, userUpdateReducer } from './reducers/userReducers';
-import { orderCreateReducer, orderDetailsReducer, myOrderListReducer } from './reducers/orderReducers';
+import { orderCreateReducer, orderDetailsReducer, myOrderListReducer,
+    orderListReducer, orderDeleteReducer } from './reducers/orderReducers';
 
 
 const cartItems = Cookie.getJSON("cartItems") || [];
@@ -25,7 +26,9 @@ const reducer = combineReducers({
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
     userUpdate: userUpdateReducer,
-    myOrderList: myOrderListReducer
+    myOrderList: myOrderListReducer,
+    orderList: orderListReducer,
+    orderDelete: orderDeleteReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

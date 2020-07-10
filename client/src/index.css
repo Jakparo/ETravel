@@ -461,3 +461,39 @@ tbody>tr:nth-child(odd){
 .profile-orders{
   flex: 3 1 60rem;
 } 
+
+/* admin */
+.dropdown{
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content{
+  position: absolute;
+  display: none;
+  right:0;
+  padding: 2rem;
+  list-style-type: none;
+  z-index: 1;
+  background-color: #000000e7; 
+  margin:1rem 0;
+  margin-top:0.4rem;
+  border-radius: .5rem ;
+  -moz-border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+}
+.dropdown:hover .dropdown-content{
+  display:block;
+  transition: ease-in-out 2ms;
+} 
+
+.dropdown .dropdown-content a{
+  background-color: #ffffff00;
+  color: rgb(255, 255, 255);
+  opacity: 0.7;
+} 
+
+.dropdown .dropdown-content a:hover{
+  /* color: #fd0000;*/
+  opacity: 1;
+} 
+

@@ -49,7 +49,7 @@ function SigninScreen(props){
                 <li>
                     <button type="submit" className="button primary">Log in</button>
                 </li>
-                <li>New to Etravel?</li>
+                <li>New to ETravel?</li>
                 <li>
                     <Link to={redirect === "/"? "register" : "register?redirect=" + redirect} className="button secondary text-center">Create your Etravel account now</Link>
                 </li>
