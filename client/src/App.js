@@ -14,6 +14,7 @@ import PlaceOrderScreen from './Screens/PlaceOrderScreen';
 import OrderScreen from './Screens/OrderScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 import airplane from './icons/airplane.svg'
+import OrdersScreen from './Screens/OrdersScreen';
 
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
                     }
                     {userInfo && userInfo.isAdmin && (
                         <div className="dropdown">
-                            <a>Setting</a>
+                            <a>Manage</a>
                             <ul className="dropdown-content">
                             <li>
                                 <Link to="/orders">Orders</Link>
@@ -80,6 +81,7 @@ function App() {
             </aside>
             <main className="main">
                 <div className="content">
+                    <Route path="/orders" component={OrdersScreen} />
                     <Route path="/profile" component={ProfileScreen} />
                     <Route path="/order/:id" component={OrderScreen}/>
                     <Route path="/products" component={ProductsScreen} />
