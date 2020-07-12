@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import {  Row, Col, Form, FormGroup,
+    Label, Input, Button } from 'reactstrap';
+
 import { register } from '../actions/userAction';
 
 function RegisterScreen(props){
@@ -27,50 +30,44 @@ function RegisterScreen(props){
         e.preventDefault();
         dispatch(register(name, email,password));
     }
-    return <div className="form">
-        <form onSubmit={submitHandler}>
-            <ul className="form-container">
-                <li>
-                    <h2>Create Account</h2>
-                </li>
-                <li>
-                    {loading && <div>Loading..</div>}
-                    {error && <div>{error}</div>}
-                </li>
-                <li>
-                    <label htmlFor="name">
-                        Name
-                    </label>
-                    <input type="name" name="name" id="name" onChange={(e)=> setName(e.target.value)}>
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="email">
-                        Email
-                    </label>
-                    <input type="email" name="email" id="email" onChange={(e)=> setEmail(e.target.value)}>
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" onChange={(e)=> setPassword(e.target.value)}>
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="rePassword">Re-enter Password</label>
-                    <input type="password" id="rePassword" name="rePassword" onChange={(e)=> setRePassword(e.target.value)}>
-                    </input>
-                </li>
-                <li>
-                    <button type="submit" className="button primary">Register</button>
-                </li>
-                <li>
-                    Already have an account?
-                    <Link to={redirect === "/"? "signin" : "signin?redirect=" + redirect} className="button secondary text-center">Sign In</Link>
-                </li>
-            </ul>
-        </form>
-    </div>
+    return (
+        <Row>
+            <Col className='mx-auto' xl='4' xm='6' >
+                <h3> Create account</h3>
+                {loading && <div>Loading..</div>}
+                {error && <div>{error}</div>}
+                <Form onSubmit={submitHandler}>
+                    <FormGroup>
+                        <Label for="name">Name</Label>
+                        <Input value={name} type="name" name="name" id="name" 
+                        onChange={(e) => setName(e.target.value)}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="email">Email</Label>
+                        <Input value={email} type="email" name="email" id="email"
+                        onChange={(e)=> setEmail(e.target.value)}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="password">Password</Label>
+                        <Input value={password} type="password" name="password" id="password"
+                        onChange={(e) => setPassword(e.target.value)}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="rePassword">Re-enter Password</Label>
+                        <Input value={password} type="rePassword" name="rePassword" id="rePassword"
+                        onChange={(e) => setPassword(e.target.value)}/>
+                    </FormGroup>
+                    <Button type="submit" outline color="success" className='mr-2'>Register</Button>
+                    <div>Already have an account ?</div>
+                    <Button color="dark">
+                        <Link to={redirect === "/"? "signin" : "signin?redirect=" + redirect}>
+                            Sign In
+                        </Link>
+                    </Button>
+                </Form>
+            </Col>
+        </Row>
+    )
 }
 
 export default RegisterScreen;

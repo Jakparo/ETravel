@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { signin } from '../actions/userAction';
+import {  Row, Col, Button, Table } from 'reactstrap';
+
 import { saveOrder, listOrders, deleteOrder } from '../actions/orderActions';
 
 function OrdersScreen(props) {
@@ -25,12 +26,14 @@ function OrdersScreen(props) {
     dispatch(deleteOrder(order._id));
     }
     return loading ? <div>Loading...</div> :
-    <div className="content content-margined">
-        <div className="order-header">
+    <div>
+        <div>
             <h3>Orders</h3>
         </div>
-        <div className="order-list">
-            <table className="table">
+    
+    <Row>
+        <Col sm='12'>
+            <Table dark>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -55,15 +58,19 @@ function OrdersScreen(props) {
                         <td>{order.isDelivered.toString()}</td>
                         <td>{order.deliveredAt}</td>
                         <td>
-                        <Link to={"/order/" + order._id} className="button secondary" >Details</Link>
-                        {' '}
-                        <button type="button" onClick={() => deleteHandler(order)} className="button secondary">Delete</button>
+                        <Button color="warning" outline type="submit">
+                            <Link to={"/order/" + order._id}>Details</Link>
+                            {' '}
+                        </Button>
+                        <Button color="danger" outline onClick={() => deleteHandler(order)}>
+                            Delete
+                        </Button>
                         </td>
                     </tr>))}
                 </tbody>
-            </table>
-
-        </div>
+            </Table>
+        </Col>
+    </Row>
     </div>
 }
 export default OrdersScreen;

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {  Row, Col, Button, Table, Form, FormGroup,
+    Label, Input } from 'reactstrap';
+
 import { saveProduct, listProducts, deleteProduct } from '../actions/productAction';
 
 const Continents = [
@@ -67,115 +70,92 @@ function ProductsScreen(props){
         dispatch(deleteProduct(product._id));
     }
 
-    return <div className="content content-margined">
-        <div className="product-header">
-            <h3>Products</h3>
-            <button className="button primary" 
-                onClick={() => openModal({})}>Create Product
-            </button>
-        </div>
-        { modalVisible &&
-            <div className="form">
-                <form onSubmit={submitHandler} >
-                    <ul className="form-container">
-                        <li>
-                            <h2>Create Product</h2>
-                        </li>
-                        <li>
-                            {loadingSave && <div>Loading...</div>}
-                            {errorSave && <div>{errorSave}</div>}
-                        </li>
-
-                        <li>
-                            <label htmlFor="name">
-                                Name
-                            </label>
-                            <input type="text" name="name" value={name} id="name" 
-                            onChange={(e) => setName(e.target.value)}/>
-                        </li>
-                        <li>
-                            <label htmlFor="price">
-                                Price
-                            </label>
-                            <input type="text" name="price" value={price} id="price"
-                            onChange={(e) => setPrice(e.target.value)}/>
-                        </li>
-                        <li>
-                            <label htmlFor="image">
-                                Image
-                            </label>
-                            <input type="text" name="image" value={image} id="image" 
-                            onChange={(e) => setImage(e.target.value)}/>
-                        </li>
-                        <li>
-                            <label htmlFor="countInStock">
-                                CountInStock
-                            </label>
-                            <input type="text" name="countInStock" value={countInStock} id="countInStock" 
-                            onChange={(e) => setCountInStock(e.target.value)}/>
-                        </li>
-                        <li>
-                            <label htmlFor="continent">
-                                Continent
-                            </label>
-                            <select name="continent" value={continent} id="continent" 
-                                onChange={(e) => setContinent(e.target.value)} style={{ padding:'1rem 0rem'}}>
-                                    {Continents.map(item => (
-                                            <option key={item.key} value={item.value}>{item.value} </option>
-                                        ))}
-                            </select>
-    
-                        </li>
-                        
-                        <li>
-                            <label htmlFor="description">
-                                Description
-                            </label>
-                            <textarea name="description" value={description} id="description" style={{ padding:'0 1rem 8rem '}}
-                            onChange={(e) => setDescription(e.target.value)}></textarea>
-                        </li>
-                        <li>
-                            <button type="submit" className="button primary">{id ? "Update" : "Create"}</button>
-                        </li>
-                        <li>
-                            <button type="button" onClick={() => setModalVisible(false)} className="button secondary">Back</button>
-                        </li>
-                    </ul>
-                </form>
-            </div>
-        }
-
-        <div className="product-list">
-
-        <table className="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Continent</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            {products.map(product => (
-                <tr key={product._id}>
-                    <td>{product._id}</td>
-                    <td>{product.name}</td>
-                    <td>{product.price}</td>
-                    <td>{product.continent}</td>
-                    <td>
-                        <button className="button" onClick={() => openModal(product)} >Edit</button>
-                        {' '}
-                        <button className="button" onClick={() => deleteHandler(product)} >Delete</button>
-                    </td>
-                </tr>))
+    return (
+        <Row>
+            <Col xl='12'> 
+                <Button color="success" outline onClick={() => openModal({})}>
+                    Create Product
+                </Button>
+            </Col>
+            { modalVisible && 
+            <Col className='mx-auto' sm='10' xl='4' lg='4' md='4'>
+                <Form onSubmit={submitHandler}>
+                    <h3>Create Product</h3>
+                    {loadingSave && <div>Loading...</div>}
+                    {errorSave && <div>{errorSave}</div>}
+                    <FormGroup>
+                        <Label for="name">Name</Label>
+                        <Input value={name} type="text" name="name" id="name" 
+                        onChange={(e) => setName(e.target.value)}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="price">Price</Label>
+                        <Input value={price} type="text" name="price" id="price"
+                        onChange={(e)=> setPrice(e.target.value)}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="image">Image</Label>
+                        <Input value={image} type="text" name="image" id="image"
+                        onChange={(e) => setImage(e.target.value)}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="countInStock">Count in Stock</Label>
+                        <Input value={countInStock} type="text" name="countInStock" id="countInStock"
+                        onChange={(e) => setCountInStock(e.target.value)}/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="continent">Continent</Label>
+                        <Input type="select" name="continent" value={continent} id="continent" 
+                            onChange={(e) => setContinent(e.target.value)} style={{ padding:'1rem 0rem'}}>
+                                {Continents.map(item => (
+                                        <option key={item.key} value={item.value}>{item.value} </option>
+                                    ))}
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="description">Description</Label>
+                        <Input type="textarea" name="description" value={description} id="description" 
+                        style={{ padding:'0 1rem 5rem '}} onChange={(e) => setDescription(e.target.value)}/>
+                    </FormGroup>
+                    <Button type="submit" outline color="success" className='mr-2'>                 
+                        {id ? "Update" : "Create"}
+                    </Button>
+                    <Button color="dark" onClick={() => setModalVisible(false)}>
+                        Back
+                    </Button>
+                </Form>
+            </Col>
             }
-            </tbody>
-        </table>
-
-        </div>
-    </div>
-
+            <Col className='mx-auto' sm='10' xl='8' lg='8' md='8'>
+            <h3>Product List </h3>
+            <Table dark>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Continent</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {products.map(product => (
+                    <tr key={product._id}>
+                        <td>{product._id}</td>
+                        <td>{product.name}</td>
+                        <td>{product.price}</td>
+                        <td>{product.continent}</td>
+                        <td>
+                            <Button color="primary" outline onClick={() => openModal(product)} >Edit</Button>
+                            {' '}
+                            <Button color="danger" outline onClick={() => deleteHandler(product)} >Delete</Button>
+                        </td>
+                    </tr>))
+                }
+                </tbody>
+            </Table>
+            </Col>
+        </Row>
+)
 }
 export default ProductsScreen; 

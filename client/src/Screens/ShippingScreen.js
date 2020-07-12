@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import {  Row, Col, Form, FormGroup,
+    Label, Input, Button } from 'reactstrap';
+
 import { saveShipping } from '../actions/cartActions';
 import CheckoutSteps from '../components/checkoutSteps';
 
@@ -18,49 +21,38 @@ function ShippingScreen(props){
         props.history.push('payment');
     }
 
-    return <div>
-        <CheckoutSteps step1 step2></CheckoutSteps>
-        <div className="form">
-            <form onSubmit={submitHandler}>
-                <ul className="form-container">
-                    <li>
-                        <h2>Shipping</h2>
-                    </li>
-                    <li>
-                        <label htmlFor="address">
-                            Address
-                        </label>
-                        <input type="text" name="address" id="address" onChange={(e)=> setAddress(e.target.value)}>
-                        </input>
-                    </li>
-                    <li>
-                        <label htmlFor="city">
-                            City
-                        </label>
-                        <input type="text" name="city" id="city" onChange={(e)=> setCity(e.target.value)}>
-                        </input>
-                    </li>
-                    <li>
-                        <label htmlFor="postalCode">
-                            Postal Code
-                        </label>
-                        <input type="text" name="postalCode" id="postalCode" onChange={(e)=> setPostalCode(e.target.value)}>
-                        </input>
-                    </li>
-                    <li>
-                        <label htmlFor="country">
-                            Country
-                        </label>
-                        <input type="text" name="country" id="country" onChange={(e)=> setCountry(e.target.value)}>
-                        </input>
-                    </li>
-                    <li>
-                        <button type="submit" className="button primary">Continue</button>
-                    </li>
-                </ul>
-            </form>
-        </div>
-    </div>
+    return (
+    <Row>
+        <Col className='mx-auto' xl='4' xm='6' >
+            <CheckoutSteps step1 step2></CheckoutSteps>
+            <h3> Shipping </h3>
+            <Form onSubmit={submitHandler}>
+                <FormGroup>
+                    <Label for="address">Address</Label>
+                    <Input type="text" name="address" id="address" 
+                    onChange={(e) => setAddress(e.target.value)}/>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="city">City</Label>
+                    <Input type="text" name="city" id="city" 
+                    onChange={(e)=> setCity(e.target.value)}/>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="postalCode">Postal Code</Label>
+                    <Input type="text" name="postalCode" id="postalCode" 
+                    onChange={(e)=> setPostalCode(e.target.value)}/>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="country">Country</Label>
+                    <Input type="text" name="country" id="country" 
+                    onChange={(e)=> setCountry(e.target.value)}/>
+                </FormGroup>
+                <Button color="primary" type="submit">
+                    Continue
+                </Button>
+            </Form>
+        </Col>
+    </Row>)
 }
 
 export default ShippingScreen;

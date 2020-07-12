@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {  Row, Col, Form, FormGroup,
+    Label, Input, Button, Table } from 'reactstrap';
 import { logout, update } from '../actions/userAction';
 import { listMyOrders } from '../actions/orderActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,56 +40,40 @@ useEffect(() => {
     };
 }, [userInfo])
 
-return <div className="profile">
-    <div className="profile-info">
-        <div className="form">
-            <form onSubmit={submitHandler} >
-                <ul className="form-container">
-                <li>
-                    <h2>User Profile</h2>
-                </li>
-                <li>
+return  (
+    <Row>
+        <Col xl='4' sm='4'>
+            <h3> User Profile</h3>
+            <Form onSubmit={submitHandler}>
+                <div>
                     {loading && <div>Loading...</div>}
                     {error && <div>{error}</div>}
                     {success && <div>Profile Saved Successfully.</div>}
-                </li>
-                <li>
-                    <label htmlFor="name">
-                    Name
-                </label>
-                    <input value={name} type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="email">
-                    Email
-                </label>
-                    <input value={email} type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="password">Password</label>
-                    <input value={password} type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
-                    </input>
-                </li>
-
-                <li>
-                    <button type="submit" className="button primary">Update</button>
-                </li>
-                <li>
-
-                    <button type="button" onClick={handleLogout} className="button secondary full-width">Logout</button>
-                </li>
-
-                </ul>
-            </form>
-        </div>
-    </div>
-    <div className="profile-orders content-margined">
+                </div>
+                <FormGroup>
+                    <Label for="name">Name</Label>
+                    <Input value={name} type="name" name="name" id="name" 
+                    onChange={(e) => setName(e.target.value)}/>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="email">Email</Label>
+                    <Input value={email} type="email" name="email" id="email"
+                    onChange={(e) => setEmail(e.target.value)}/>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="password">Password</Label>
+                    <Input value={password} type="password" name="password" id="password"
+                    onChange={(e) => setPassword(e.target.value)}/>
+                </FormGroup>
+                <Button type="submit" outline color="primary" className='mr-2'>Update</Button>
+                <Button outline color="danger" onClick={handleLogout}>Log out</Button>
+            </Form>
+        </Col>
+        <Col xl='8' sm='8'>
         {
         loadingOrders ? <div>Loading...</div> :
             errorOrders ? <div>{errorOrders} </div> :
-            <table className="table">
+            <Table >
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -108,10 +94,11 @@ return <div className="profile">
                     </td>
                 </tr>)}
                 </tbody>
-            </table>
+            </Table>
         }
-    </div>
-</div>
+        </Col>
+    </Row>
+)
 }
 
 export default ProfileScreen; 

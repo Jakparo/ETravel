@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {  Row, Col, Form, FormGroup,
+    Label, Input, Button } from 'reactstrap';
+    
 import { savePayment } from '../actions/cartActions';
 import CheckoutSteps from '../components/checkoutSteps';
 
@@ -15,39 +17,35 @@ function PaymentScreen(props){
         props.history.push('placeorder');
     }
 
-    return <div>
-        <CheckoutSteps step1 step2 step3></CheckoutSteps>
-        <div className="form">
-            <form onSubmit={submitHandler}>
-                <ul className="form-container">
-                    <li>
-                        <h2>Payment</h2>
-                    </li>
-                    <li>
-                        <span>
-                        <input type="radio" name="paymentMethod" id="paymentMethod" value="paypal"
-                        onChange={(e)=> setPaymentMethod(e.target.value)}>
-                        </input>
-                        <label htmlFor="paymentMethod">
+    return (
+        <Row>
+            <Col className='mx-auto' xl='4' xm='6' >
+                <CheckoutSteps step1 step2 step3></CheckoutSteps>
+                <h3> Payment </h3>
+                <Form onSubmit={submitHandler}>
+                    <FormGroup tag="fieldset">
+                        <legend>Choose payment method</legend>
+                        <FormGroup check>
+                        <Label check>
+                            <Input type="radio" name="paymentMethod" id="paymentMethod" value="paypal"
+                            onChange={(e)=> setPaymentMethod(e.target.value)} />{' '}
                             Paypal
-                        </label>
-                        </span>
-                        <span>
-                        <input type="radio" name="paymentMethod" id="paymentMethod" value="COD"
-                        onChange={(e)=> setPaymentMethod(e.target.value)}>
-                        </input>
-                        <label htmlFor="paymentMethod">
+                        </Label>
+                        </FormGroup>
+                        <FormGroup check>
+                        <Label check>
+                            <Input type="radio" name="paymentMethod" id="paymentMethod" value="COD"
+                            onChange={(e)=> setPaymentMethod(e.target.value)}/>{' '}
                             Ship COD
-                        </label>
-                        </span>
-                    </li>
-                    <li>
-                        <button type="submit" className="button primary">Continue</button>
-                    </li>
-                </ul>
-            </form>
-        </div>
-    </div>
+                        </Label>
+                        </FormGroup>
+                        <Button color="primary" type="submit">
+                            Continue
+                        </Button>
+                    </FormGroup>
+                </Form>
+            </Col>
+        </Row>)
 }
 
 export default PaymentScreen;

@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import{ Collapse, Navbar, NavbarToggler,
+        NavbarBrand, Nav, NavItem,
+        UncontrolledDropdown, DropdownToggle, 
+        DropdownMenu, DropdownItem, Container
+} from 'reactstrap';  
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
+// Import Screen Components
 import ProductsScreen from './Screens/ProductsScreen';
 import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
@@ -22,65 +28,52 @@ function App() {
     const userSignin = useSelector(state=>state.userSignin);
     const {userInfo} = userSignin;
 
-    const openMenu = () => {
-        document.querySelector(".sidebar").classList.add("open");
-    }
-    const closeMenu = () =>{
-        document.querySelector(".sidebar").classList.remove("open");
-    }
+    const [collapsed, setCollapsed] = useState(true);
+    const toggleNavbar = () => setCollapsed(!collapsed);
+
     
     return (
     <BrowserRouter>
-        <div className="grid-container">
-            <header className="header">
-                <div className="brand">
-                    <button onClick={openMenu}>
-                        &#9776;
-                    </button>
-                    <Link to="/">ETravel <img src={url} width={32} height={32}/> </Link>
-                </div>
-                <div className="header-links">
-                    <Link to ="/cart">Cart</Link>
-                    {
-                        userInfo ? <Link to="/profile">{userInfo.name}</Link>:
-                        <Link to ="/signin">Log in</Link>
-                    }
-                    {userInfo && userInfo.isAdmin && (
-                        <div className="dropdown">
-                            <a>Manage</a>
-                            <ul className="dropdown-content">
-                            <li>
-                                <Link to="/orders">Orders</Link>
-                                <Link to="/products">Products</Link>
-                            </li>
-                            </ul>
-                        </div>
-                    )}
-                </div>
-            </header>
-            <aside className="sidebar">
-                <h3>Continent</h3>
-                <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-                <ul>
-                    <li>
-                        <a href="index.html">Africa</a>
-                    </li>
-                    <li>
-                        <a href="index.html">Europe</a>
-                    </li>
-                    <li>
-                        <a href="index.html">Asia</a>
-                    </li>
-                    <li>
-                        <a href="index.html">North America</a>
-                    </li>
-                    <li>
-                        <a href="index.html">South America</a>
-                    </li>
-                </ul>
-            </aside>
-            <main className="main">
-                <div className="content">
+        <div>
+            <Navbar light expand="sm" style={{backgroundColor: 'ffffff'}}>
+                <Container fluid>
+                    <NavbarBrand href="/" className="brand">
+                        <Link to="/">ETravel <img src={url} width={32} height={32}/> </Link>
+                    </NavbarBrand>
+                    <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+                    <Collapse isOpen={!collapsed} navbar>
+                        <Nav navbar className="ml-sm-auto">
+                            <NavItem className='header-links'>
+                                <Link to ="/cart">Cart</Link>
+                                {
+                                    userInfo ? <Link to="/profile">{userInfo.name}</Link>:
+                                    <Link to ="/signin">Log in</Link>
+                                }
+                                { userInfo && userInfo.isAdmin && (
+                                    <UncontrolledDropdown nav inNavbar>
+                                        <DropdownToggle nav caret>
+                                            Manage
+                                        </DropdownToggle>
+                                        <DropdownMenu right>
+                                            <DropdownItem>
+                                                <Link to="/orders">Orders</Link>
+                                            </DropdownItem>
+                                            <DropdownItem>
+                                                <Link to="/products">Products</Link>
+                                            </DropdownItem>
+                                        </DropdownMenu>
+                                    </UncontrolledDropdown> 
+                                )}
+                            </NavItem>
+                            {/* <NavItem>
+                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                            </NavItem> */}
+                        </Nav>
+                    </Collapse>
+                </Container>
+            </Navbar>
+            <main>
+                <Container fluid style={{marginTop: '2rem'}} className='h-75'>
                     <Route path="/orders" component={OrdersScreen} />
                     <Route path="/profile" component={ProfileScreen} />
                     <Route path="/order/:id" component={OrderScreen}/>
@@ -93,11 +86,14 @@ function App() {
                     <Route path="/product/:id" exact component={ProductScreen}/>
                     <Route path="/cart/:id?" component={CartScreen} />
                     <Route path="/" exact component={HomeScreen}/>
-                </div>
+                </Container>
             </main>
-            <footer className="footer">
-            Copyright © 2020 ETravel.
-            </footer>
+            {/* <footer>
+                <div className='b-0'>
+                    Copyright © 2020 ETravel
+                </div>
+            </footer> */}
+                
         </div>
     </BrowserRouter>
     );
