@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import CheckoutSteps from '../components/checkoutSteps';
 import { createOrder, detailsOrder } from '../actions/orderActions';
+import {  Row, Col, Button, CardImg, Media} from 'reactstrap';
+
 function OrderScreen(props) {
 
     const dispatch = useDispatch();
@@ -19,100 +21,57 @@ function OrderScreen(props) {
     console.log(orderDetails)
 
     return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
-
-    <div>
-        <div className="placeorder">
-            <div className="placeorder-info">
-            <div>
-                <h3>
-                Shipping
-                </h3>
-                <div>
+        <Row>
+            <Col xl='6' md='6' lg='6' sm='6' xl='6' className='border border-secondary'>
+                <div className='border'>
+                    <h3>Shipping</h3>
                     {order.shipping.address}, {order.shipping.city},
                     {order.shipping.postalCode}, {order.shipping.country},
-                </div>
-                <div>
-                    {order.isDelivered ? "Delivered at " + order.deliveredAt : "Not Delivered."}
-                </div>
-            </div>
-            <div>
-                <h3>Payment</h3>
-                <div>
-                Payment Method: {order.payment.paymentMethod}
-                </div>
-                <div>
-                {order.isPaid ? "Paid at " + order.paidAt : "Not Paid."}
-                </div>
-            </div>
-            <div>
-                <ul className="cart-list-container">
-                    <li>
-                    <h3>
-                    Shopping Cart
-                    </h3>
-                        <div>
-                        Price
-                        </div>
-                    </li>
-                    {
-                    order.orderItems.length === 0 ?
                     <div>
-                    Cart is empty
+                        {order.isDelivered ? "Delivered at " + order.deliveredAt : "Not Delivered."}
                     </div>
-                    :
-                    order.orderItems.map(item =>
-                    <li>
-                        <div className="cart-image">
-                            <img src={item.image} alt="product" />
-                        </div>
-                        <div className="cart-name">
-                            <div>
+                </div>
+                <div className='border'>
+                    <h3>Payment</h3>
+                    Payment Method: {order.payment.paymentMethod}
+                    <div>
+                        {order.isPaid ? "Paid at " + order.paidAt : "Not Paid."}
+                    </div>
+                </div>
+                <h3> Shopping Cart</h3>
+                {
+                order.orderItems.length === 0 ?
+                <div>
+                Cart is empty
+                </div>
+                :
+                order.orderItems.map(item =>
+                    <Media className={'mb-2'}>
+                        <CardImg className={'h-25', 'w-25'}  src={item.image} alt="product" />
+                        <Media body className='ml-2'>
+                            <Media heading>
                                 <Link to={"/product/" + item.product}>
                                 {item.name}
                                 </Link>
-                            </div>
+                            </Media>
+                            <div> Qty {item.qty}</div>
                             <div>
-                                Qty: {item.qty}
+                                Price ${item.price}
                             </div>
-                        </div>
-                        <div className="cart-price">
-                            ${item.price}
-                        </div>
-                    </li>
-                    )
-                }
-            </ul>
-        </div>
-    </div>
-
-        <div className="placeorder-action">
-            <ul>
-                <li>
-                    <button className="button primary full-width" onClick={payHandler} >Pay Now</button>
-                </li>
-                <li>
-                    <h3>Order Summary</h3>
-                </li>
-                <li>
-                    <div>Items</div>
-                    <div>${order.itemsPrice}</div>
-                </li>
-                <li>
-                    <div>Shipping</div>
-                    <div>${order.shippingPrice}</div>
-                </li>
-                <li>
-                    <div>Tax</div>
-                    <div>${order.taxPrice}</div>
-                </li>
-                <li>
-                    <div>Order Total</div>
-                    <div>${order.totalPrice}</div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+                            </Media>
+                    </Media>
+                )
+            }
+            </Col>
+            <Col xl='6' md='6' lg='6' sm='6' xl='6' className='border border-primary'>
+                <h3>Order Summary</h3>
+                <div>Items: ${order.itemsPrice}</div>
+                <div>Shipping: ${order.shippingPrice}</div> 
+                <div>Tax: ${order.taxPrice}</div>
+                <div className={'text-danger font-weight-bold'} >Order total:${order.totalPrice}</div>
+                <Button color='primary' outline onClick={payHandler} >Pay Now</Button>
+            </Col>
+        </Row>
 
 }
 

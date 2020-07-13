@@ -75,8 +75,10 @@ function ProductScreen(props){
                                 </FormGroup>
                             </CardSubtitle>
                         </CardBody>
-                        {  product.countInStock> 0 && <Button onClick={handleAddToCart}color="primary">Add to Cart</Button>
-
+                        {  product.countInStock> 0 && 
+                            <Button onClick={handleAddToCart}color="primary">
+                                Add to Cart
+                            </Button>
                         } 
                     </Card>
                 </Col>

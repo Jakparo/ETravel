@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import{ Collapse, Navbar, NavbarToggler,
         NavbarBrand, Nav, NavItem,
-        UncontrolledDropdown, DropdownToggle, 
+        Dropdown, DropdownToggle, 
         DropdownMenu, DropdownItem, Container
 } from 'reactstrap';  
 import { useSelector } from 'react-redux';
@@ -31,6 +31,10 @@ function App() {
     const [collapsed, setCollapsed] = useState(true);
     const toggleNavbar = () => setCollapsed(!collapsed);
 
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggle = () => setDropdownOpen(prevState => !prevState);
+
     
     return (
     <BrowserRouter>
@@ -43,18 +47,23 @@ function App() {
                     <NavbarToggler onClick={toggleNavbar} className="mr-2" />
                     <Collapse isOpen={!collapsed} navbar>
                         <Nav navbar className="ml-sm-auto">
-                            <NavItem className='header-links'>
+                            <NavItem className='header-links btn'>
                                 <Link to ="/cart">Cart</Link>
-                                {
-                                    userInfo ? <Link to="/profile">{userInfo.name}</Link>:
-                                    <Link to ="/signin">Log in</Link>
-                                }
-                                { userInfo && userInfo.isAdmin && (
-                                    <UncontrolledDropdown nav inNavbar>
-                                        <DropdownToggle nav caret>
+                            {
+                                userInfo ? 
+                                <Link to="/profile">{userInfo.name}
+                                </Link>:
+                                <Link to ="/signin">Log in</Link>
+                            }
+                            </NavItem>
+
+                                { 
+                                userInfo && userInfo.isAdmin && (
+                                    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                                        <DropdownToggle caret>
                                             Manage
                                         </DropdownToggle>
-                                        <DropdownMenu right>
+                                        <DropdownMenu>
                                             <DropdownItem>
                                                 <Link to="/orders">Orders</Link>
                                             </DropdownItem>
@@ -62,12 +71,8 @@ function App() {
                                                 <Link to="/products">Products</Link>
                                             </DropdownItem>
                                         </DropdownMenu>
-                                    </UncontrolledDropdown> 
+                                    </Dropdown>
                                 )}
-                            </NavItem>
-                            {/* <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                            </NavItem> */}
                         </Nav>
                     </Collapse>
                 </Container>
