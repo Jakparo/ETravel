@@ -1,26 +1,43 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle ,Spinner, Row, Container, Col } from 'reactstrap';
-    
-
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle ,Spinner, Row, Container, Col, Form, FormGroup, Input, Button } from 'reactstrap';
 import { listProducts } from '../actions/productAction';
+import search from '../icons/search.svg';
 
 function HomeScreen(props){
-    
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const name = props.match.params.id ? props.match.params.id : '';
     const productList =  useSelector(state => state.productList);
     const {products, loading, error} = productList;
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
-        dispatch(listProducts());
+        dispatch(listProducts(name));
         return () => {
             //
         };
-    }, [])
+    }, [name])
 
-    return loading? <div><Spinner color="primary" /></div> : 
-    error ? <div> {error}</div> :
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(listProducts(name, searchKeyword))
+    }
+
+    return <>
+        {name && <h2>{name}</h2>}
+        <Row>
+            <Col className="mx-auto" xl="4" md="6" sm="6">
+                <Form onSubmit={submitHandler}>
+                    <FormGroup className="d-flex">
+                        <Input className="border border-dark"  name="searchKeyword" onChange={(e) => setSearchKeyword(e.target.value)} />
+                        <Button color="light" className="border border-dark"><img src={search} width={22} height={22}/></Button>
+                    </FormGroup>
+                </Form>
+            </Col>
+        </Row>
+            {loading? <div><Spinner color="primary" /></div> : 
+            error ? <div> {error}</div> :
                 <Row>
                     {
                     products.map(product => 
@@ -37,11 +54,11 @@ function HomeScreen(props){
                                 </Link>
                             </Card>
                         </Col>
-                    )
-                }
-
+                        )
+                    }
                 </Row>
-
+            }
+    </>
 }
 
 export default HomeScreen;

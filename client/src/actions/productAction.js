@@ -7,10 +7,11 @@ import{ PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL,
         PRODUCT_DELETE_SUCCESS, PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST }
 from "../constants/productConstants"
 
-const listProducts = () => async (dispatch) => {
+const listProducts = (name = '', searchKeyword ='') => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST });
-        const { data } = await axios.get("/api/products");
+        const { data } = await axios.get("/api/products?name=" 
+        + name + "&searchKeyword=" + searchKeyword);
         dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
 
     } catch (error) {

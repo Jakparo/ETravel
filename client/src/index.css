@@ -53,37 +53,12 @@ nav {
   background-color: #E00099 !important;
 }
 
-
-.b-0 {
-  position: flex;
-  left:0;
-  right:0;
-  margin-left:auto;
-  margin-right:auto;
-  bottom: 0;
-  position: absolute;
-  text-align: center;
-  display: block;
-  margin-bottom: 2rem;
-}
-
-
 a:hover{
   text-decoration: none;
 }
 
 .product-rating{
   margin-bottom: 1rem;
-}
-
-/*Sidebar*/
-.brand button{
-  font-size: 3rem;
-  padding: .5rem;
-  background: none;
-  border: none;
-  color: black;
-  cursor: pointer;
 }
 
 .card {

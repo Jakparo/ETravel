@@ -54,8 +54,8 @@ function RegisterScreen(props){
                     </FormGroup>
                     <FormGroup>
                         <Label for="rePassword">Re-enter Password</Label>
-                        <Input value={password} type="rePassword" name="rePassword" id="rePassword"
-                        onChange={(e) => setPassword(e.target.value)}/>
+                        <Input value={rePassword} type="password" name="rePassword" id="rePassword"
+                        onChange={(e) => setRePassword(e.target.value)}/>
                     </FormGroup>
                     <Button type="submit" outline color="success" className='mr-2'>Register</Button>
                     <div>Already have an account ?</div>

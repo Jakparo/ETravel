@@ -106,7 +106,7 @@ function ProductsScreen(props){
                     <FormGroup>
                         <Label for="continent">Continent</Label>
                         <Input type="select" name="continent" value={continent} id="continent" 
-                            onChange={(e) => setContinent(e.target.value)} style={{ padding:'1rem 0rem'}}>
+                            onChange={(e) => setContinent(e.target.value)}>
                                 {Continents.map(item => (
                                         <option key={item.key} value={item.value}>{item.value} </option>
                                     ))}
