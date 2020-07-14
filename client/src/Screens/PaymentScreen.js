@@ -19,7 +19,7 @@ function PaymentScreen(props){
 
     return (
         <Row>
-            <Col className='mx-auto' xl='4' xm='6' >
+            <Col className='mx-auto' xl='4' lg='5' md='6'  sm='7' xs='8' >
                 <CheckoutSteps step1 step2 step3></CheckoutSteps>
                 <h3> Payment </h3>
                 <Form onSubmit={submitHandler}>

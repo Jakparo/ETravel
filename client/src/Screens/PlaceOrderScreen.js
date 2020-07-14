@@ -44,7 +44,7 @@ function PlaceOrderScreen(props) {
 
     return (
         <Row>
-            <Col xl='6' md='6' lg='6' sm='6' xl='6' className='border border-secondary'>
+            <Col xl='6' md='6' lg='6' sm='6' className='border border-secondary'>
                 <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
                 <div className='border'>
                     <h3>Shipping</h3>
@@ -80,7 +80,7 @@ function PlaceOrderScreen(props) {
                 )
             }
             </Col>
-            <Col xl='6' md='6' lg='6' sm='6' xl='6' className='border border-primary'>
+            <Col xl='6' md='6' lg='6' sm='6' className='border border-primary'>
                 <h3>Order Summary</h3>
                 <div>Items: ${itemsPrice}</div>
                 <div>Shipping: ${shippingPrice}</div> 

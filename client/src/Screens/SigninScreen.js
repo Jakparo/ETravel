@@ -28,7 +28,7 @@ function SigninScreen(props){
     }
     return (
         <Row>
-            <Col className='mx-auto' xl='4' xm='6' >
+            <Col className='mx-auto' xl='3' xs='8' md='5' lg='5' sm='6' >
                 <h3> ETravel</h3>
                 {loading && <div>Loading..</div>}
                 {error && <div>{error}</div>}

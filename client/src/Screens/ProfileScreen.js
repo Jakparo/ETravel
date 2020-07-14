@@ -42,7 +42,7 @@ useEffect(() => {
 
 return  (
     <Row>
-        <Col xl='4' sm='4'>
+        <Col xl='4' lg='4' md='3' sm='8' xs='10'>
             <h3> User Profile</h3>
             <Form onSubmit={submitHandler}>
                 <div>
@@ -69,7 +69,7 @@ return  (
                 <Button outline color="danger" onClick={handleLogout}>Log out</Button>
             </Form>
         </Col>
-        <Col xl='8' sm='8'>
+        <Col xl='8' lg='8' md='9' sm='12' xs='12'>
         {
         loadingOrders ? <div>Loading...</div> :
             errorOrders ? <div>{errorOrders} </div> :

@@ -27,11 +27,11 @@ function HomeScreen(props){
     return <>
         {name && <h2>{name}</h2>}
         <Row>
-            <Col className="mx-auto" xl="4" md="6" sm="6">
+            <Col className="mx-auto" xl="4" md="6" sm="6" xs='10'>
                 <Form onSubmit={submitHandler}>
                     <FormGroup className="d-flex">
-                        <Input className="border border-dark"  name="searchKeyword" onChange={(e) => setSearchKeyword(e.target.value)} />
-                        <Button color="light" className="border border-dark"><img src={search} width={22} height={22}/></Button>
+                        <Input className="border"  name="searchKeyword" onChange={(e) => setSearchKeyword(e.target.value)} />
+                        <Button color="light" className="border"><img src={search} width={22} height={22}/></Button>
                     </FormGroup>
                 </Form>
             </Col>

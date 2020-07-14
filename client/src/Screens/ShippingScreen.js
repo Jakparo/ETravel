@@ -23,7 +23,7 @@ function ShippingScreen(props){
 
     return (
     <Row>
-        <Col className='mx-auto' xl='4' xm='6' >
+        <Col className='mx-auto' xl='4' lg='5' md='6'  sm='7' xs='8' >
             <CheckoutSteps step1 step2></CheckoutSteps>
             <h3> Shipping </h3>
             <Form onSubmit={submitHandler}>

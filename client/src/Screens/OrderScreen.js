@@ -22,7 +22,7 @@ function OrderScreen(props) {
 
     return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
         <Row>
-            <Col xl='6' md='6' lg='6' sm='6' xl='6' className='border border-secondary'>
+            <Col xl='6' md='6' lg='6' sm='6' className='border border-secondary'>
                 <div className='border'>
                     <h3>Shipping</h3>
                     {order.shipping.address}, {order.shipping.city},
@@ -63,7 +63,7 @@ function OrderScreen(props) {
                 )
             }
             </Col>
-            <Col xl='6' md='6' lg='6' sm='6' xl='6' className='border border-primary'>
+            <Col xl='6' md='6' lg='6' sm='6' className='border border-primary'>
                 <h3>Order Summary</h3>
                 <div>Items: ${order.itemsPrice}</div>
                 <div>Shipping: ${order.shippingPrice}</div> 

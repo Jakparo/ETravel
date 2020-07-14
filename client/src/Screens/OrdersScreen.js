@@ -32,7 +32,7 @@ function OrdersScreen(props) {
         </div>
     
     <Row>
-        <Col sm='12'>
+        <Col xl='12' lg='12' md='12' sm='12' xs='12'>
             <Table dark>
                 <thead>
                     <tr>

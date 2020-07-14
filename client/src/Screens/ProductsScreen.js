@@ -78,7 +78,7 @@ function ProductsScreen(props){
                 </Button>
             </Col>
             { modalVisible && 
-            <Col className='mx-auto' sm='10' xl='4' lg='4' md='4'>
+            <Col className='mx-auto' sm='10' xl='4' lg='4' md='4' xs='10'>
                 <Form onSubmit={submitHandler}>
                     <h3>Create Product</h3>
                     {loadingSave && <div>Loading...</div>}
